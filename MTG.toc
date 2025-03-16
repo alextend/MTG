@@ -1,0 +1,22 @@
+## Interface: 110100
+## Title: |cFFFF7F00MTG |cFF4A766E- Mrrl's Trade Game
+## Notes: Automates the murloc trading game in Nazjatar.
+## Version: v1.0-20250312
+## DefaultState: enabled
+## LoadWith: Blizzard_Collections
+## SavedVariables: MTGDB
+## Author: Alextend
+## IconTexture: Interface\ICONS\Inv_10xp_WorldEvent_Special_MurlocFigure
+## Description: A tool used to automatically calculates and trading Murloc items.
+
+
+libs\load_libs.xml
+locales\Locale-enUS.lua
+locales\Locale-zhCN.lua
+locales\Locale-zhTW.lua
+locales.lua
+setting.lua
+data.lua
+MTG.lua
+
+
