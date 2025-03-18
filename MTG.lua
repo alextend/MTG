@@ -400,6 +400,9 @@ local getRewardText = function(itemID)
         realID = idRelationTable[realID]
     end
 
+    if rawget(MTG.L, realID) == nil then
+        return ""
+    end
     return MTG.L[realID]
 end
 
@@ -468,7 +471,7 @@ function MRRL_DELAYED_MERCHANT_SHOW()
                     end
                 end
                 if not talkedNPC[NPCID] then
-                    print(L["Detected"], NPCname, currentItem, getRewardText(GetItemID(currentItem)) or "")
+                    print(L["Detected"], NPCname, currentItem, getRewardText(GetItemID(currentItem)))
                 end
             else
                 print(string.format("|cff999900未扫描物品信息. 重新和 %s 对话!", NPCname))
