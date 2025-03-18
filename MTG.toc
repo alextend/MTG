@@ -1,13 +1,13 @@
 ## Interface: 110100
 ## Title: |cFFFF7F00MTG |cFF4A766E- Mrrl's Trade Game
 ## Notes: Automates the murloc trading game in Nazjatar.
-## Version: v1.0-20250312
+## Version: v1.0.2-20250318
 ## DefaultState: enabled
 ## LoadWith: Blizzard_Collections
-## SavedVariables: MTGDB
+## SavedVariables: MTG_RewardSetting, MTG_CheckTacoFirst, MTG_BuyNormalItemOption, MTG_BuyRareItemOption
 ## Author: Alextend
 ## IconTexture: Interface\ICONS\Inv_10xp_WorldEvent_Special_MurlocFigure
-## Description: A tool used to automatically calculates and trading Murloc items.
+## Description: A tool used to automatically calculates and trading fishman items.
 
 
 libs\load_libs.xml

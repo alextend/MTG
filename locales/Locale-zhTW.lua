@@ -9,7 +9,6 @@ if MTG_L then
     MTG_L["Buy normal items"] = "購買普通物品"
     MTG_L["Don't buy normal items"] = "不購買普通物品"
     MTG_L["Check taco before buying rare items with taco"] = "先檢查觸手捲，然後再用觸手捲購買稀有品"
-
     MTG_L["Detected that you have loaded WeakAuras's Mrrl's trade game, to avoid repeated purchases, the MTG addon has been automatically closed, followed by WeakAuras's Mrrl's trade game purchase"] =
     "檢測到你已加載WA的Mrrl's trade game,為了避免重復購買,MTG插件已自動關閉,接下來使用的是WA的Mrrl's trade game購買."
     MTG_L["buy"] = "購買"

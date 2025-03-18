@@ -2,7 +2,7 @@ local addonName = ...
 
 MTG = LibStub("AceAddon-3.0"):NewAddon(addonName, "AceConsole-3.0", "AceEvent-3.0", "AceComm-3.0", "AceTimer-3.0")
 MTG.L = LibStub("AceLocale-3.0"):GetLocale("MTG")
-MTG.Version = "1.0"
+MTG.Version = "1.0.2"
 MTG.Setting = MTGSetting
 
 local showReq = true                    -- 显示每个项目的要求。
@@ -84,7 +84,7 @@ local initializeValueableList = function(itemID, isNeedTaco)
     local buyNormalItems = (MTG.Setting:getBuyNormalItemOption() == 1) and 1 or 0
     local buyRareItemsNoTaco = (MTG.Setting:getBuyRareItemOption() <= 2) and isWearingCape and 1 or 0
     local buyRareItemsWithTaco = (MTG.Setting:getBuyRareItemOption() == 2) and isWearingCape and
-    ((not MTG.Setting:getCheckTacoFirst()) or hasTaco) and 1 or 0
+        ((not MTG.Setting:getCheckTacoFirst()) or hasTaco) and 1 or 0
 
     valueableList = {
         [168053] = buyNormalItems,
@@ -581,11 +581,19 @@ function frame:GET_ITEM_INFO_RECEIVED(event, ...)
 end
 
 function frame:ADDON_LOADED(event, ...)
-    if MTGDB == nil then
-        MTGDB = {}
+    MTG.Setting:checkReward(itemIDs)
+
+    if MTG_CheckTacoFirst == nil then
+        MTG_CheckTacoFirst = true
     end
-    MTG.Setting:bind(MTGDB)
-    MTG.Setting:check(itemIDs)
+
+    if MTG_BuyNormalItemOption == nil then
+        MTG_BuyNormalItemOption = 1
+    end
+
+    if MTG_BuyRareItemOption == nil then
+        MTG_BuyRareItemOption = 2
+    end
 
     frame:RegisterEvent("MERCHANT_SHOW")
     frame:RegisterEvent("MERCHANT_CLOSED")
