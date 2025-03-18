@@ -435,7 +435,9 @@ function MRRL_DELAYED_MERCHANT_SHOW()
                     end
                 end
 
-                local _, _, price, _, _, isPurchasable = C_MerchantFrame.GetItemInfo(itemIndex)
+                local itemInfo = C_MerchantFrame.GetItemInfo(itemIndex)
+                local price = itemInfo.price
+                local isPurchasable = itemInfo.isPurchasable
                 if isPurchasable or debug.forceValueablePurchase then
                     if price == 0 then --# 这件物品是用货币买的。
                         for currencyIndex = 1, GetMerchantItemCostInfo(itemIndex) do
