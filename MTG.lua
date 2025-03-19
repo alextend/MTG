@@ -78,7 +78,7 @@ local initializeValueableList = function(itemID, isNeedTaco)
     if debug.showCapeTacoTidestallion then
         print("player is wearing cape - ", isWearingCape)
         print("player has taco - ", hasTaco)
-        print("player learned CrimsonTidestallion - ", learnedCrimsonTidestallion())
+        print("player learned CrimsonTidestallion - ", learnedCrimsonTidestallion)
     end
 
     local buyNormalItems = (MTG.Setting:getBuyNormalItemOption() == 1) and 1 or 0
@@ -107,6 +107,10 @@ local initializeValueableList = function(itemID, isNeedTaco)
         [169202] = buyRareItemsWithTaco,
         [170158] = buyRareItemsWithTaco
     }
+    if learnedCrimsonTidestallion or C_Item.GetItemCount(169202) > 0 then
+        valueableList[169202] = nil
+    end
+
     if debug.showValueableList or true then
         for k, v in pairs(valueableList) do
             -- print(k, GetItemInfo(k), v)
@@ -175,6 +179,10 @@ local GetNPCID = function(unit)
         return nil
     end
     local id = UnitGUID(unit)
+    if id == nil then
+        return nil
+    end
+
     id = string.match(id, "-(%d+)-%x+$")
     return tonumber(id, 10)
 end
@@ -199,7 +207,7 @@ local queueBuyMerchantItem = function(itemIndex, amount)
 end
 
 GenerateBuyList = function(amount, itemID)
-    if not MerchantItemList[itemID] or MTG.Setting.getReward(itemID) == false then
+    if not MerchantItemList[itemID] or MTG.Setting:getReward(itemID) == false then
         return
     end
 
@@ -653,7 +661,7 @@ local MTG_Options = {
         --     width = "normal",
         --     type = "execute",
         --     func = function()
-        --         MTG.Setting.setMarkersize(26);
+        --         MTG.Setting:setMarkersize(26);
         --     end
         -- },
         buyOption = {
