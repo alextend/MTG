@@ -429,6 +429,10 @@ function MRRL_DELAYED_MERCHANT_SHOW()
                 local currentItemID = GetItemID(currentItem)
                 local currentItemReq = {}
 
+                if currentItemID == nil then
+                    return false
+                end
+
                 if (NPCID == 152084) and (not talkedNPC[NPCID]) then
                     if not valueableList[currentItemID] then
                         valueableList[currentItemID] = 1
